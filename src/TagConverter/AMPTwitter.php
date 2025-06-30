@@ -39,7 +39,9 @@ class AMPTwitter implements TagConverterInterface
             $amptwitter->setAttribute('layout', 'responsive');
             $amptwitter->setAttribute('data-tweetid', $post_id);
 
-            $tag->parentNode->parentNode->replaceChild($amptwitter, $tag->parentNode);
+            if (!is_null($tag->parentNode)) {
+                $tag->parentNode->parentNode->replaceChild($amptwitter, $tag->parentNode);
+            }
         }
 
         return $doc;
